@@ -1,7 +1,4 @@
-# vue-3-pinia-jwt-authentication-example
+安裝步驟：
 
-Vue 3 + Pinia - JWT Authentication Tutorial & Example
-
-Documentation at https://jasonwatmore.com/post/2022/05/26/vue-3-pinia-jwt-authentication-tutorial-example
-
-Documentación en español en https://jasonwatmore.es/post/2022/05/26/vue-3-pinia-tutorial-y-ejemplo-de-autenticacion-jwt
+1. 在本機 clone 過後使用 npm install
+2. 使用 npm run dev 開啟
