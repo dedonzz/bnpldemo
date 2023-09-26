@@ -20,34 +20,32 @@ function onSubmit(values, { setErrors }) {
 <template>
   <div class="loginview">
     <div class="login-container">
-      <!-- <div class="alert alert-info">
-      Username: test<br />
-      Password: test
-    </div> -->
-      <Form @submit.prevent="" :validation-schema="schema" v-slot="{ errors, isSubmitting }">
-        <h2>玉山 BNPL</h2>
-        <div class="form-group">
-          <label>電話</label>
-          <Field name="username" type="text" class="form-control" :class="{ 'is-invalid': errors.username }" />
-          <div class="invalid-feedback">{{ errors.username }}</div>
-        </div>
-        <div class="form-group">
-          <label>密碼</label>
-          <Field name="password" type="password" class="form-control" :class="{ 'is-invalid': errors.password }" />
-          <div class="invalid-feedback">{{ errors.password }}</div>
-        </div>
-        <div class="form-group">
-          <button @click="onSubmit" class="btn btn-primary" :disabled="isSubmitting">
-            <span v-show="isSubmitting" class="spinner-border spinner-border-sm mr-1"></span>
-            登入
-          </button>
-          <button @click="" class="btn btn-primary" :disabled="isSubmitting">
-            <span v-show="isSubmitting" class="spinner-border spinner-border-sm mr-1"></span>
-            註冊
-          </button>
-        </div>
-        <div v-if="errors.apiError" class="alert alert-danger mt-3 mb-0">{{ errors.apiError }}</div>
-      </Form>
+      <div class="login-form-container">
+        <Form @submit="onSubmit" :validation-schema="schema" v-slot="{ errors, isSubmitting }">
+          <h2>玉山 BNPL</h2>
+          <div class="form-group">
+            <label>電話</label>
+            <Field name="username" type="text" class="form-control" :class="{ 'is-invalid': errors.username }" />
+            <div class="invalid-feedback">{{ errors.username }}</div>
+          </div>
+          <div class="form-group">
+            <label>密碼</label>
+            <Field name="password" type="password" class="form-control" :class="{ 'is-invalid': errors.password }" />
+            <div class="invalid-feedback">{{ errors.password }}</div>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary" :disabled="isSubmitting">
+              <span v-show="isSubmitting" class="spinner-border spinner-border-sm mr-1"></span>
+              登入
+            </button>
+          </div>
+          <div v-if="errors.apiError" class="alert alert-danger mt-3 mb-0">{{ errors.apiError }}</div>
+        </Form>
+        <button @click="$router.push('/signup')" class="btn btn-primary">
+          <span v-show="isSubmitting" class="spinner-border spinner-border-sm mr-1"></span>
+          註冊
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -58,29 +56,13 @@ function onSubmit(values, { setErrors }) {
     margin: auto;
     width: 400px;
     padding-top: 20vh;
-    form {
-      h2 {
-        color: #00635e;
-        text-align: center;
-        font-family: "Segoe UI", Segoe, "Segoe WP", Tahoma, Verdana, Arial, "微軟正黑體", "Microsoft JhengHei",
-          "新細明體", sans-serif;
-      }
+    .login-form-container {
       padding: 20px;
       background-color: white;
       font-size: 18px;
       border-radius: 10px;
       box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.4);
       min-height: 100px;
-      input {
-        margin-top: 10px;
-        margin-bottom: 10px;
-        width: 100%;
-        border: 0;
-        padding: 10px 0 10px 5px;
-        border: 1px solid #ccc;
-        position: relative;
-        background: transparent;
-      }
 
       button {
         margin-top: 10px;
@@ -96,6 +78,41 @@ function onSubmit(values, { setErrors }) {
       }
       button:hover {
         background-color: #00635e60;
+      }
+      form {
+        h2 {
+          color: #00635e;
+          text-align: center;
+          font-family: "Segoe UI", Segoe, "Segoe WP", Tahoma, Verdana, Arial, "微軟正黑體", "Microsoft JhengHei",
+            "新細明體", sans-serif;
+        }
+
+        input {
+          margin-top: 10px;
+          margin-bottom: 10px;
+          width: 100%;
+          border: 0;
+          padding: 10px 0 10px 5px;
+          border: 1px solid #ccc;
+          position: relative;
+          background: transparent;
+        }
+
+        button {
+          margin-top: 10px;
+          width: 100%;
+          background-color: #00635e;
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+        }
+        button:hover {
+          background-color: #00635e60;
+        }
       }
     }
   }
